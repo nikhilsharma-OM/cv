@@ -1,0 +1,222 @@
+% ============================================================
+%  Nikhil Sharma — Academic CV
+%  Design matches nikhilsharma.info (Fraunces + Hanken Grotesk,
+%  oxblood accent, hairline rules). No photo.
+%  Compile with XeLaTeX or LuaLaTeX (required for fontspec).
+% ============================================================
+\documentclass[10pt]{article}
+
+\usepackage[paperwidth=8.5in,paperheight=11in,top=0.85in,bottom=0.85in,left=0.9in,right=0.9in]{geometry}
+\usepackage{fontspec}
+\usepackage{xcolor}
+\usepackage{hyperref}
+\usepackage{etoolbox}
+
+% ---------- DESIGN TOKENS (match _config / index.html) ----------
+\definecolor{ink}{HTML}{1B1D22}
+\definecolor{muted}{HTML}{6A655D}
+\definecolor{line}{HTML}{E2DED6}
+\definecolor{accent}{HTML}{7A2E2E}
+
+% ---------- FONTS ----------
+% Ligatures=TeX so "--"/"---" render as en/em dashes and quotes curl.
+\setmainfont{HankenGrotesk-Regular.ttf}[
+  Path = fonts/,
+  BoldFont = HankenGrotesk-SemiBold.ttf,
+  ItalicFont = HankenGrotesk-Regular.ttf,
+  Ligatures = TeX
+]
+\newfontfamily\fraunces{Fraunces-Regular.ttf}[Path = fonts/, Ligatures = TeX]
+\newfontfamily\frauncessb{Fraunces-SemiBold.ttf}[Path = fonts/, Ligatures = TeX]
+\newfontfamily\hankenmed{HankenGrotesk-Medium.ttf}[Path = fonts/, Ligatures = TeX]
+\newfontfamily\hankensb{HankenGrotesk-SemiBold.ttf}[Path = fonts/, Ligatures = TeX]
+
+\color{ink}
+\pagestyle{empty}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{4pt plus 2pt minus 1pt}
+
+\hypersetup{
+  colorlinks = true,
+  urlcolor = accent,
+  linkcolor = accent
+}
+
+% ---------- SECTION HEADER: "01  Research" + hairline rule ----------
+\newcounter{cvsec}
+\newcommand{\cvsection}[1]{%
+  \stepcounter{cvsec}%
+  \bigskip
+  {\fraunces\color{accent}\small\ifnum\thecvsec<10 0\fi\thecvsec}\quad
+  {\fraunces\Large\color{ink} #1}\par
+  \color{line}\noindent\rule{\linewidth}{0.6pt}\par
+  \medskip\color{ink}
+}
+
+% ---------- SUBHEAD: small oxblood Fraunces label ----------
+\newcommand{\cvsubhead}[1]{%
+  \medskip
+  {\frauncessb\color{accent}\normalsize #1}\par\smallskip
+}
+
+% ---------- PUBLICATION ENTRY ----------
+% #1 year  #2 status badge (or empty)  #3 title  #4 authors (or empty)  #5 note/description
+\newcommand{\pubentry}[5]{%
+  \noindent
+  \begin{minipage}[t]{0.07\linewidth}
+    {\fraunces\color{accent}\large #1}
+  \end{minipage}%
+  \begin{minipage}[t]{0.93\linewidth}
+    \ifstrempty{#2}{}{{\hankensb\color{accent}\footnotesize\MakeUppercase{#2}}\par\smallskip}
+    {\frauncessb\color{ink} #3}\par
+    \ifstrempty{#4}{}{{\color{muted}\itshape\footnotesize #4}\par}
+    \ifstrempty{#5}{}{\smallskip{\color{muted}\footnotesize #5}\par}
+  \end{minipage}\par
+  \smallskip{\color{line}\noindent\rule{\linewidth}{0.4pt}}\par\medskip
+}
+
+% ---------- ROW ENTRY (teaching / talks / service) ----------
+% #1 when  #2 title  #3 body
+\newcommand{\rowentry}[3]{%
+  \noindent
+  \begin{minipage}[t]{0.20\linewidth}
+    {\hankensb\color{muted}\footnotesize #1}
+  \end{minipage}%
+  \begin{minipage}[t]{0.80\linewidth}
+    {\frauncessb\color{ink}\normalsize #2}\par
+    \ifstrempty{#3}{}{{\color{muted}\footnotesize #3}\par}
+  \end{minipage}\par
+  \smallskip{\color{line}\noindent\rule{\linewidth}{0.4pt}}\par\medskip
+}
+
+\begin{document}
+
+% ============ HEADER ============
+{\fraunces\huge\color{ink} Nikhil Sharma}\par
+\smallskip
+{\hankenmed\color{muted} Operations Management \& Business Analytics}\par
+{\hankenmed\color{muted} Fisher College of Business, The Ohio State University}\par
+\smallskip
+{\hankensb\color{accent} On the 2026--2027 academic job market}\par
+\medskip
+{\footnotesize\color{muted}
+  \href{mailto:sharma.1106@osu.edu}{sharma.1106@osu.edu} \quad$\cdot$\quad
+  Columbus, OH \quad$\cdot$\quad
+  \href{https://nikhilsharma.info}{nikhilsharma.info}
+}\par
+
+\color{line}\noindent\rule{\linewidth}{0.6pt}
+
+% ============ RESEARCH ============
+\cvsection{Research}
+
+\cvsubhead{Research Interests}
+{\footnotesize\color{muted}
+Supply Chain Intermediaries $\cdot$ Third-Party Payment Contracts $\cdot$ Pro-Environmental Operations (AI) $\cdot$ Behavioral Operations
+}\par
+
+\cvsubhead{Job Market Paper}
+\pubentry{2026}{Manuscript ready for submission $\cdot$ M\&SOM}%
+{Regulating Powerful Intermediaries: An Empirical Assessment in the Retail Pharmacy Supply Chain}%
+{with John Gray and Jurriaan De Jong}%
+{I examine regulatory actions taken by Ohio Medicaid targeting spread pricing, in which a Pharmacy Benefit Manager (PBM) bills the payer more for a drug than it reimburses the dispensing pharmacy. Using a difference-in-differences design on a coarsened exact-matched sample, complemented by an event-study analysis using synthetic controls, I find that payment transparency reduced Medicaid payer costs and lowered drug-quality risk, while a subsequent spread-pricing ban reversed a substantial portion of the cost savings. Presented at POMS 2025, DSI 2025, POMS 2026, and ISA 2026. First Place, Hayes Graduate Research Forum 2025.}
+
+\cvsubhead{Under Review / Revise \& Resubmit}
+\pubentry{2026}{Reject and Resubmit $\cdot$ M\&SOM}%
+{Improving Recycling Quality through AI and Green Nudges: Evidence from a Field Experiment}%
+{with Erin McKie, Arvind Chandrasekaran, and Sanghoon Cho}%
+{A 48-week field experiment with 7,600 Midwest households testing AI-enabled curbside feedback and two types of green nudges on recycling contamination. Presented at the UIUC Supply Chain Management Conference 2025.}
+
+\pubentry{2026}{Major Revision $\cdot$ Journal of Business Logistics}%
+{Emergence, Coexistence, and Dominance of Supply Chain Intermediaries: A Literature Review and Future Research Directions}%
+{with Molly Hughes, John Gray, and Jurriaan De Jong}%
+{An integrative literature review developing a conceptual framework on how and when supply chain intermediaries create and destroy value.}
+
+\pubentry{2026}{Major Revision $\cdot$ Health Affairs Scholar}%
+{Generic Drug Supply Chain Quality and Market Dynamics: A Cross-Sectional Observational Study of Metformin}%
+{with John V. Gray, Robert Handfield, and coauthors}%
+{Using FDA drug manufacturing facility inspection data on metformin, we find that inspection outcomes do not reliably predict market price or sales volume.}
+
+\cvsubhead{Working Papers \& Research in Progress}
+\pubentry{2026}{}%
+{Multiproduct Retail Decisions under Aggregate Contracts}%
+{with James Hill and Rakesh Mallipeddi $\cdot$ Dissertation Chapter 2}%
+{A 2x2 laboratory newsvendor experiment comparing individual and aggregate third-party payment contracts. Lab Study 1 complete; Lab Study 2 in planning. Presented at POMS 2026.}
+
+\pubentry{2025}{}%
+{The Impact of Curbing Intermediary Practices on Retailers' Performance}%
+{with John Gray and Jurriaan De Jong $\cdot$ Dissertation Chapter 3}%
+{Using five-state Medicaid prescription claims data to examine how curbing intermediary practices affected retailers' product mix, drug quality, and cost pass-through. Data collection complete.}
+
+\pubentry{2025}{}%
+{The Waterbed Effect in Intermediated Supply Chains}%
+{with John Gray and Jurriaan De Jong}%
+{Exploring spillover effects of regulating intermediaries across states. Data collection complete.}
+
+\pubentry{2025}{}%
+{Multi-contract Retail Decisions under Third-Party Payments}%
+{with James Hill and Rakesh Mallipeddi}%
+{Experiment design complete.}
+
+% ============ EDUCATION ============
+\cvsection{Education}
+\rowentry{2022--present}{Ph.D., Operations Management \& Business Analytics}{Fisher College of Business, The Ohio State University}
+\rowentry{2005--2009}{B.E., Electronics and Communications}{Institute of Technology \& Management, Gurgaon (Maharshi Dayanand University, Rohtak)}
+
+% ============ TEACHING ============
+\cvsection{Teaching}
+\cvsubhead{Instructor, Fisher College of Business}
+\rowentry{2025}{BUSMGT 3230 --- Introduction to Operations Management}{Instructor of record. Student Evaluation of Instructor (SEI): 4.8 / 5.0.}
+
+\cvsubhead{Graduate Teaching Assistant, Fisher College of Business}
+\rowentry{2022--2025}{BUSMGT 3230 --- Introduction to Operations Management (x2)}{Including one fully online recitation.}
+\rowentry{2022--2025}{BUSMGT 7223, BUSMGT 2320, BUSOBA 2321, BUSOBA 4234, BUSOBA 4254, MBA 6273, BUSOBA 7201}{Project Management; Decision Sciences: Statistical Techniques; Business Analytics; Service Operations; Sustainable Projects; Data Analysis Management; Service Operations.}
+
+\cvsubhead{Industry \& Community Teaching}
+\rowentry{2013}{Ad Hoc Instructor, Accenture Learning \& Knowledge Management}{Coached professional classrooms on mainframe technology. Average feedback score: 4.2 / 5.0.}
+\rowentry{2016--2017}{Mentor, Starbase CT}{Public speaking and robotics, Betances STEM School and Jumoke Academy, Hartford, CT.}
+
+% ============ TALKS ============
+\cvsection{Conferences \& Presentations}
+\rowentry{2026}{ISA Annual Meeting}{Regulating Powerful Intermediaries (job market paper).}
+\rowentry{2026}{POMS Annual Conference}{Regulating Powerful Intermediaries (job market paper); Multiproduct Retail Decisions under Aggregate Contracts.}
+\rowentry{2025}{DSI Annual Conference}{Regulating Powerful Intermediaries (job market paper).}
+\rowentry{2025}{UIUC Supply Chain Management Conference}{Improving Recycling Quality through AI and Green Nudges.}
+\rowentry{2025}{POMS Annual Conference}{Regulating Powerful Intermediaries (job market paper).}
+\rowentry{2025}{Hayes Graduate Research Forum, The Ohio State University}{First Place, Business category --- ``Regulation of Supply Chain Intermediaries within Pharmaceutical Supply Chains.''}
+\rowentry{2025}{Indian School of Business (ISB) -- POMS Workshop}{Dissertation research on supply chain intermediaries.}
+
+% ============ SERVICE & AWARDS ============
+\cvsection{Service \& Awards}
+\cvsubhead{Academic Service}
+\rowentry{2025--present}{Emerging-Scholar Ambassadorial Core (ESAC), Journal of Operations Management}{Involved in the creation of ``The Doctorate in Operations Management Embassy (D.O.M.E.)''}
+\rowentry{2025--2026}{Session Chair}{DSI Annual Conference (2025, 2026), POMS (2026), INFORMS Annual Meeting (2026).}
+\rowentry{2025--2026}{Panel Co-Moderator}{DSI Panel on AI in Healthcare.}
+\rowentry{2026}{Ad-Hoc Reviewer}{Decision Sciences Journal.}
+\rowentry{---}{Professional Memberships}{INFORMS, Production and Operations Management Society (POMS), Decision Sciences Institute (DSI).}
+
+\cvsubhead{Awards}
+\rowentry{2025}{First Place, Hayes Graduate Research Forum, The Ohio State University}{Business category, for the dissertation paper ``Regulation of Supply Chain Intermediaries within Pharmaceutical Supply Chains.''}
+\rowentry{2019}{Top 5 Finalist Team, Accenture Global Tech Innovation Contest (North America)}{Chicago, IL --- out of 350+ entries.}
+\rowentry{2018}{Top 5 Finalist Team, Accenture Global Tech Innovation Contest (North America)}{Out of 350+ entries.}
+
+% ============ INDUSTRY EXPERIENCE ============
+\cvsection{Industry Experience}
+{\footnotesize\color{muted}Accenture, India \& USA (2009--2022) --- 12 years across IT operations and business analytics, with exposure to Financial Services, Life Sciences, Communication/Media/Technology, and Health \& Public Services.}\par\medskip
+\rowentry{2014--2022}{Business Analytics Consulting, Hartford, CT --- Business Insurance, Travelers}{Transformed the claim management system supporting day-to-day SLA challenges; developed 100\% automation for minor IT batch operations, saving 1,400 hours annually.}
+\rowentry{2013--2014}{Business Analyst, Bangalore, India --- Biopharmaceutical Research, Covance (LabCorp)}{Implemented a process-based approach for 10 applications supporting pharmacy services.}
+\rowentry{2012--2013}{Product Development, Bangalore, India --- KPN (Communication, Media \& Technology)}{Guided a 3-member team delivering a complex business requirement across six use-case modules with 0 defects.}
+\rowentry{2009--2012}{Production Operations \& Quality Analyst, Bangalore, India --- United Health Group}{Developed eight process optimizations saving \$204,720 annually; built analytics tools measuring 15+ financial KPIs, saving \$65,000 annually.}
+
+% ============ SKILLS ============
+\cvsection{Skills \& Training}
+\cvsubhead{Programming Languages \& Software}
+{\footnotesize\color{muted}R, STATA, LaTeX, Python, MS Office}\par
+
+\cvsubhead{Technology \& Platform Training}
+{\footnotesize\color{muted}Ab Initio, Databricks, AWS}\par
+
+\cvsubhead{Industry Exposure}
+{\footnotesize\color{muted}Healthcare \& Insurance, Pharmaceutical Technology, Communications/Media/Technology, General Insurance (P\&C)}\par
+
+\end{document}
