@@ -1,0 +1,206 @@
+% ============================================================
+%  Nikhil Sharma — Academic CV (classic black & white format)
+%  Traditional academic CV layout: bold caps section headers with
+%  a rule, Times body text, no color. Compiles with pdflatex.
+%  Same content as main.tex (the colored nikhilsharma.info-styled
+%  version) — just reformatted.
+% ============================================================
+\documentclass[11pt]{article}
+
+\usepackage[paperwidth=8.5in,paperheight=11in,top=0.85in,bottom=0.85in,left=0.9in,right=0.9in]{geometry}
+\usepackage{times}
+\usepackage{hyperref}
+\usepackage{etoolbox}
+
+\pagestyle{empty}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{2pt}
+
+\hypersetup{
+  colorlinks = true,
+  urlcolor = black,
+  linkcolor = black
+}
+
+% ---------- SECTION HEADER: bold small caps + rule ----------
+\newcommand{\cvsection}[1]{%
+  \bigskip
+  {\bfseries\large \MakeUppercase{#1}}\par
+  \vspace{-5pt}
+  \noindent\rule{\linewidth}{0.8pt}\par
+  \smallskip
+}
+
+% ---------- SUBHEAD ----------
+\newcommand{\cvsubhead}[1]{%
+  \medskip
+  {\bfseries\itshape #1}\par
+  \smallskip
+}
+
+% ---------- PUBLICATION ENTRY ----------
+% #1 year  #2 status (or empty)  #3 title  #4 authors (or empty)  #5 note/description (or empty)
+\newcommand{\pubentry}[5]{%
+  \noindent
+  \begin{minipage}[t]{0.08\linewidth}
+    \bfseries #1
+  \end{minipage}%
+  \begin{minipage}[t]{0.92\linewidth}
+    \ifstrempty{#2}{}{{\itshape\small #2}\par}
+    {\bfseries #3}\par
+    \ifstrempty{#4}{}{{\small #4}\par}
+    \ifstrempty{#5}{}{\smallskip{\small #5}\par}
+  \end{minipage}\par
+  \medskip
+}
+
+% ---------- ROW ENTRY (teaching / talks / service / references) ----------
+% #1 when  #2 title  #3 body
+\newcommand{\rowentry}[3]{%
+  \noindent
+  \begin{minipage}[t]{0.20\linewidth}
+    \small #1
+  \end{minipage}%
+  \begin{minipage}[t]{0.80\linewidth}
+    {\bfseries #2}\par
+    \ifstrempty{#3}{}{{\small #3}\par}
+  \end{minipage}\par
+  \medskip
+}
+
+\begin{document}
+
+% ============ HEADER ============
+\begin{center}
+  {\LARGE\bfseries Nikhil Sharma}\\[3pt]
+  Operations Management \& Business Analytics\\
+  Fisher College of Business, The Ohio State University\\[4pt]
+  \textbf{On the 2026--2027 academic job market}\\[4pt]
+  \small
+  \href{mailto:sharma.1106@osu.edu}{sharma.1106@osu.edu} \quad$\cdot$\quad
+  Columbus, OH \quad$\cdot$\quad
+  \href{https://nikhilsharma.info}{nikhilsharma.info}
+\end{center}
+\noindent\rule{\linewidth}{1pt}
+
+% ============ RESEARCH ============
+\cvsection{Research}
+
+\cvsubhead{Job Market Paper}
+\pubentry{2026}{Job Market Paper $\cdot$ Target Submission: October 2026 $\cdot$ M\&SOM}%
+{Regulating Powerful Intermediaries: An Empirical Assessment in the Retail Pharmacy Supply Chain}%
+{with John Gray and Jurriaan De Jong}%
+{}
+
+\cvsubhead{Under Review / Revise \& Resubmit}
+\pubentry{2026}{Preparing for Resubmission (Reject and Resubmit) $\cdot$ M\&SOM}%
+{Improving Recycling Quality through AI and Green Nudges: Evidence from a Field Experiment}%
+{with Erin McKie, Arvind Chandrasekaran, and Sanghoon Cho}%
+{}
+
+\pubentry{2026}{Preparing for Resubmission (3rd Round Major Revision) $\cdot$ Journal of Business Logistics}%
+{Emergence, Coexistence, and Dominance of Supply Chain Intermediaries: A Literature Review and Future Research Directions}%
+{with Molly Hughes, John Gray, and Jurriaan De Jong}%
+{An integrative literature review developing a conceptual framework on how and when supply chain intermediaries create and destroy value.}
+
+\pubentry{2026}{Preparing for Resubmission (Revision Granted) $\cdot$ Health Affairs Scholar}%
+{Generic Drug Supply Chain Quality and Market Dynamics: A Cross-Sectional Observational Study of Metformin}%
+{with John V. Gray, Robert Handfield, and coauthors}%
+{}
+
+\cvsubhead{Working Papers \& Research in Progress}
+\pubentry{2026}{}%
+{Multiproduct Retail Decisions under Aggregate Contracts}%
+{with James Hill and Rakesh Mallipeddi $\cdot$ Dissertation Chapter 2}%
+{}
+
+\pubentry{2025}{}%
+{The Impact of Curbing Intermediary Practices on Retailers' Performance}%
+{with John Gray and Jurriaan De Jong $\cdot$ Dissertation Chapter 3}%
+{}
+
+\pubentry{2025}{}%
+{The Waterbed Effect in Intermediated Supply Chains}%
+{with John Gray and Jurriaan De Jong}%
+{}
+
+\pubentry{2025}{}%
+{Multi-contract Retail Decisions under Third-Party Payments}%
+{with James Hill and Rakesh Mallipeddi}%
+{}
+
+% ============ TEACHING ============
+\cvsection{Teaching}
+\cvsubhead{Instructor, Fisher College of Business}
+\noindent
+\begin{minipage}[t]{0.20\linewidth}
+  \small 2025
+\end{minipage}%
+\begin{minipage}[t]{0.80\linewidth}
+  {\bfseries BUSMGT 3230 --- Introduction to Operations Management}\par
+  {\small Instructor of record.}\quad
+  {\bfseries\large SEI: 4.8 / 5.0}\par
+\end{minipage}\par
+\medskip
+
+\cvsubhead{Graduate Teaching Assistant, Fisher College of Business}
+\rowentry{2022--2025}{BUSMGT 3230 --- Introduction to Operations Management (x2)}{Including one fully online recitation.}
+\rowentry{2022--2025}{BUSMGT 7223, BUSMGT 2320, BUSOBA 2321, BUSOBA 4234, BUSOBA 4254, MBA 6273, BUSOBA 7201}{Project Management; Decision Sciences: Statistical Techniques; Business Analytics; Service Operations; Sustainable Projects; Data Analysis Management; Service Operations.}
+
+{\small Earlier teaching: Ad hoc instructor, Accenture Learning \& Knowledge Management (2013); mentor, Starbase CT (2016--2017) --- public speaking and robotics, Hartford, CT.}\par
+
+% ============ EDUCATION ============
+\cvsection{Education}
+\rowentry{2022--present}{Ph.D., Operations Management \& Business Analytics (expected May 2027)}{Fisher College of Business, The Ohio State University. Dissertation Committee: John Gray (Chair), Jurriaan De Jong, Rakesh Mallipeddi, James Hill.}
+\rowentry{2005--2009}{B.E., Electronics and Communications}{Institute of Technology \& Management, Gurgaon (Maharshi Dayanand University, Rohtak)}
+
+% ============ TALKS ============
+\cvsection{Conferences \& Presentations}
+\rowentry{2026}{ISA Annual Meeting}{Regulating Powerful Intermediaries (job market paper).}
+\rowentry{2026}{POMS Annual Conference}{Regulating Powerful Intermediaries (job market paper); Multiproduct Retail Decisions under Aggregate Contracts.}
+\rowentry{2025}{DSI Annual Conference}{Regulating Powerful Intermediaries (job market paper).}
+\rowentry{2025}{UIUC Supply Chain Management Conference}{Improving Recycling Quality through AI and Green Nudges.}
+\rowentry{2025}{POMS Annual Conference}{Regulating Powerful Intermediaries (job market paper).}
+\rowentry{2025}{Hayes Graduate Research Forum, The Ohio State University}{First Place, Business category --- ``Regulation of Supply Chain Intermediaries within Pharmaceutical Supply Chains.''}
+\rowentry{2025}{Indian School of Business (ISB) -- POMS Workshop}{Dissertation research on supply chain intermediaries.}
+
+% ============ SERVICE & AWARDS ============
+\cvsection{Service \& Awards}
+\cvsubhead{Academic Service}
+\rowentry{2025--present}{Emerging-Scholar Ambassadorial Core (ESAC), Journal of Operations Management}{Involved in the creation of ``The Doctorate in Operations Management Embassy (D.O.M.E.)''}
+\rowentry{2025--2027}{Session Chair}{DSI Annual Conference (2025, 2026), POMS (2026, 2027), INFORMS Annual Meeting (2026), AI in Business Conference (2026).}
+\rowentry{2025--2026}{Panel Co-Moderator}{DSI Panel on AI in Healthcare.}
+\rowentry{2026}{Ad-Hoc Reviewer}{Decision Sciences Journal.}
+\rowentry{---}{Professional Memberships}{INFORMS, Production and Operations Management Society (POMS), Decision Sciences Institute (DSI).}
+
+\cvsubhead{Awards}
+\rowentry{2025}{First Place, Hayes Graduate Research Forum, The Ohio State University}{Business category, for the dissertation paper ``Regulation of Supply Chain Intermediaries within Pharmaceutical Supply Chains.''}
+\rowentry{2019}{Top 5 Finalist Team, Accenture Global Tech Innovation Contest (North America)}{Chicago, IL --- out of 350+ entries.}
+\rowentry{2018}{Top 5 Finalist Team, Accenture Global Tech Innovation Contest (North America)}{Out of 350+ entries.}
+
+% ============ INDUSTRY EXPERIENCE ============
+\cvsection{Industry Experience}
+{\small Accenture, India \& USA (2009--2022) --- 12 years across IT operations and business analytics, with exposure to Financial Services, Life Sciences, Communication/Media/Technology, and Health \& Public Services.}\par\medskip
+\rowentry{2014--2022}{Business Analytics Consulting, Hartford, CT --- Business Insurance, Travelers}{Transformed the claim management system supporting day-to-day SLA challenges; developed 100\% automation for minor IT batch operations, saving 1,400 hours annually.}
+\rowentry{2013--2014}{Business Analyst, Bangalore, India --- Biopharmaceutical Research, Covance (LabCorp)}{Implemented a process-based approach for 10 applications supporting pharmacy services.}
+\rowentry{2012--2013}{Product Development, Bangalore, India --- KPN (Communication, Media \& Technology)}{Guided a 3-member team delivering a complex business requirement across six use-case modules with 0 defects.}
+\rowentry{2009--2012}{Production Operations \& Quality Analyst, Bangalore, India --- United Health Group}{Developed eight process optimizations saving \$204,720 annually; built analytics tools measuring 15+ financial KPIs, saving \$65,000 annually.}
+
+% ============ SKILLS ============
+\cvsection{Skills \& Training}
+\cvsubhead{Programming Languages \& Software}
+{\small R, STATA, LaTeX, Python, MS Office}\par
+
+\cvsubhead{Technology \& Platform Training}
+{\small Ab Initio, Databricks, AWS}\par
+
+\cvsubhead{Industry Exposure}
+{\small Healthcare \& Insurance, Pharmaceutical Technology, Communications/Media/Technology, General Insurance (P\&C)}\par
+
+% ============ REFERENCES ============
+\cvsection{References}
+\rowentry{John Gray}{Dean's Distinguished Professor of Operations; Chair, Operations \& Business Analytics --- Fisher College of Business, The Ohio State University}{\href{mailto:gray.402@osu.edu}{gray.402@osu.edu} $\cdot$ 614-247-8021}
+\rowentry{James A. Hill}{Professor of Operations Management --- Fisher College of Business, The Ohio State University}{\href{mailto:hill.249@osu.edu}{hill.249@osu.edu} $\cdot$ 614-247-8965}
+\rowentry{Rakesh Mallipeddi}{Assistant Professor --- Fisher College of Business, The Ohio State University}{\href{mailto:mallipeddi.1@osu.edu}{mallipeddi.1@osu.edu} $\cdot$ 614-247-5741}
+
+\end{document}
