@@ -9,17 +9,31 @@
 
 \usepackage[paperwidth=8.5in,paperheight=11in,top=0.85in,bottom=0.85in,left=0.9in,right=0.9in]{geometry}
 \usepackage{times}
+\usepackage{xcolor}
 \usepackage{hyperref}
 \usepackage{etoolbox}
 
-\pagestyle{empty}
+\definecolor{linkblue}{HTML}{1A56DB}
+
+\makeatletter
+\newcommand{\ps@cvfooter}{%
+  \renewcommand{\@oddhead}{}%
+  \renewcommand{\@evenhead}{}%
+  \renewcommand{\@oddfoot}{\hfil{\small\thepage\ of \pageref*{LastPage}}\hfil}%
+  \renewcommand{\@evenfoot}{\@oddfoot}%
+}
+\makeatother
+\pagestyle{cvfooter}
 \setlength{\parindent}{0pt}
 \setlength{\parskip}{2pt}
+\sloppy
+\hyphenpenalty=10000
+\exhyphenpenalty=10000
 
 \hypersetup{
   colorlinks = true,
-  urlcolor = black,
-  linkcolor = black
+  urlcolor = linkblue,
+  linkcolor = linkblue
 }
 
 % ---------- SECTION HEADER: bold small caps + rule ----------
@@ -58,10 +72,10 @@
 % #1 when  #2 title  #3 body
 \newcommand{\rowentry}[3]{%
   \noindent
-  \begin{minipage}[t]{0.20\linewidth}
-    \small #1
+  \begin{minipage}[t]{0.26\linewidth}
+    \raggedright\small #1
   \end{minipage}%
-  \begin{minipage}[t]{0.80\linewidth}
+  \begin{minipage}[t]{0.74\linewidth}
     {\bfseries #2}\par
     \ifstrempty{#3}{}{{\small #3}\par}
   \end{minipage}\par
@@ -184,8 +198,8 @@
 \rowentry{2009--2012}{Production Operations \& Quality Analyst, United Health Group, Bangalore, India}{}
 
 \cvsubhead{Industry Awards}
-\rowentry{2019}{Top 5 Finalist Team, Accenture Global Tech Innovation Contest (North America)}{Chicago, IL, out of 350+ entries. Pitched in the ``Innovate for Society'' category:\\\textbullet\ Enhancing transparency in CSR donations\\\textbullet\ Providing a digital identity for street vendors using blockchain platforms\\\textbf{Collaborators:} \href{https://www.linkedin.com/in/prakash-trivedi-2761479b/}{Prakash Trivedi}, \href{https://www.linkedin.com/in/saurabhgaikwad07/}{Saurabh Gaikwad}, \href{https://www.linkedin.com/in/surendra-kushwah/}{Surendra Kushwaha}, \href{https://www.linkedin.com/in/ravindra-pratap-singh-a8634648/}{Ravindra Pratap Singh}.}
-\rowentry{2018}{Top 5 Finalist Team, Accenture Global Tech Innovation Contest (North America)}{Chicago, IL, out of 350+ entries. Pitched in the ``Innovate for Society'' category:\\\textbullet\ Transforming the Public Distribution System in developing countries using blockchain to fight corruption\\\textbf{Collaborators:} \href{https://www.linkedin.com/in/prakash-trivedi-2761479b/}{Prakash Trivedi}, \href{https://www.linkedin.com/in/saurabhgaikwad07/}{Saurabh Gaikwad}, \href{https://www.linkedin.com/in/ravindra-pratap-singh-a8634648/}{Ravindra Pratap Singh}.}
+\rowentry{2019}{Top 5 Finalist Team, Accenture Global Tech Innovation Contest (North America)}{Chicago, IL, out of 350+ entries. Pitched in the ``Innovate for Society'' category:\\\textbullet\ Enhancing transparency in CSR donations\\\textbullet\ Providing a digital identity for street vendors using blockchain platforms\\\textbf{Collaborators:} Prakash Trivedi, Saurabh Gaikwad, Surendra Kushwaha, Ravindra Pratap Singh.}
+\rowentry{2018}{Top 5 Finalist Team, Accenture Global Tech Innovation Contest (North America)}{Chicago, IL, out of 350+ entries. Pitched in the ``Innovate for Society'' category:\\\textbullet\ Transforming the Public Distribution System in developing countries using blockchain to fight corruption\\\textbf{Collaborators:} Prakash Trivedi, Saurabh Gaikwad, Ravindra Pratap Singh.}
 
 % ============ SKILLS ============
 \cvsection{Skills \& Training}
@@ -201,7 +215,9 @@
 % ============ REFERENCES ============
 \cvsection{References}
 \rowentry{John Gray}{Dean's Distinguished Professor of Operations; Chair, Operations \& Business Analytics, Fisher College of Business, The Ohio State University}{\href{mailto:gray.402@osu.edu}{gray.402@osu.edu} $\cdot$ 614-247-8021}
+\rowentry{Aravind Chandrasekaran}{Interim Dean; John W. Berry, Sr. Chair in Business, Fisher College of Business, The Ohio State University}{\href{mailto:chandrasekaran.24@osu.edu}{chandrasekaran.24@osu.edu} $\cdot$ 614-292-4223}
 \rowentry{James A. Hill}{Professor of Operations Management, Fisher College of Business, The Ohio State University}{\href{mailto:hill.249@osu.edu}{hill.249@osu.edu} $\cdot$ 614-247-8965}
 \rowentry{Rakesh Mallipeddi}{Assistant Professor, Fisher College of Business, The Ohio State University}{\href{mailto:mallipeddi.1@osu.edu}{mallipeddi.1@osu.edu} $\cdot$ 614-247-5741}
 
+\label{LastPage}
 \end{document}
